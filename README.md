@@ -8,4 +8,4 @@ Documenting my JavaScript learning path following Jonas Schmedtmann's course.
 
 - [x] Array Destructuring
 - [x] Object Destructuring
-- [ ] Strings
+- [x] Spread Operator
