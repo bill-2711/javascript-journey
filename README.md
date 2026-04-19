@@ -1,6 +1,6 @@
 # javascript-journey
 
-# JavaScript Journey 🚀
+## JavaScript Journey 🚀
 
 Documenting my JavaScript learning path following Jonas Schmedtmann's course.
 
@@ -9,3 +9,4 @@ Documenting my JavaScript learning path following Jonas Schmedtmann's course.
 - [x] Array Destructuring
 - [x] Object Destructuring
 - [x] Spread Operator
+- [x] Rest Operator

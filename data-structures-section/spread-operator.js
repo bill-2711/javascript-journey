@@ -1,3 +1,4 @@
+"use strict";
 // HEADER Spread Operator
 // spread operator - for unpacking array elements at one
 // expand an array into all it's element
