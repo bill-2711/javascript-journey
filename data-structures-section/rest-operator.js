@@ -81,3 +81,11 @@ add(...x);
 restaurant.orderRest("mushrooms", "onions", "olives", "spinach");
 
 // END
+
+// corrections
+function multiply(first, ...rest) {
+  const sum = rest.reduce((acc, val) => acc + val, 0);
+  return first * sum;
+}
+
+console.log(multiply(2, 3, 4, 5));
