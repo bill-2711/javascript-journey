@@ -10,3 +10,4 @@ Documenting my JavaScript learning path following Jonas Schmedtmann's course.
 - [x] Object Destructuring
 - [x] Spread Operator
 - [x] Rest Operator
+- [x] Short Circuiting
