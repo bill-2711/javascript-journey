@@ -1,14 +1,26 @@
-# javascript-journey
+# JavaScript Journey 🚀
 
-## JavaScript Journey 🚀
+Learning JavaScript through Jonas Schmedtmann's course.
 
-Documenting my JavaScript learning path following Jonas Schmedtmann's course.
+## Current Section
 
-## Progress
+Data Structures: Modern Operators & Strings
+
+## Topics Covered
 
 - [x] Array Destructuring
 - [x] Object Destructuring
 - [x] Spread Operator
-- [x] Rest Operator
+- [x] Rest Pattern & Parameters
 - [x] Short Circuiting
-- [x] For-of-loop
+- [x] For Of Loop
+- [x] Enhanced Object Literals
+- [ ] Optional Chaining
+- [ ] Maps
+- [ ] Sets
+- [ ] Strings
+
+## Projects
+
+- [ ] Tip Calculator — Frontend Mentor
+- [ ] Chop Bar Bill Splitter — Personal Project
