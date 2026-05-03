@@ -15,7 +15,7 @@ Data Structures: Modern Operators & Strings
 - [x] Short Circuiting
 - [x] For Of Loop
 - [x] Enhanced Object Literals
-- [ ] Optional Chaining
+- [x] Optional Chaining
 - [ ] Maps
 - [ ] Sets
 - [ ] Strings

@@ -23,7 +23,7 @@ const menu = [
     category: "drink",
   },
   {
-    name: "Malta Gunines",
+    name: "Malta Guinness",
     price: 10,
     category: "drink",
   },
@@ -56,3 +56,11 @@ const customers = [
   { name: "Bill", tableNumber: 1 },
   { name: "Oscar", tableNumber: 2 },
 ];
+
+// DISPLAY all menu items
+for (const food of menu) {
+  console.log(food);
+}
+
+const [a, b, c] = menu;
+console.log(a.name, b, c);

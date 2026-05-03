@@ -1,7 +1,8 @@
 "use strict";
 
-// Enhanced Object-literal
+//TITLE Enhanced Object-literal
 const weekdays = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+
 const hours = {
   [weekdays[3]]: {
     open: 12,
@@ -47,3 +48,25 @@ const restaurant = {
     console.log(mealOne, mealTwo);
   },
 };
+// TITLE OPTIONAL CHAINING
+
+// NOTE  USED FOR CHECKING IF A DATA EXIST
+// WITHOUT THE ?, AN UNDEFINED OBJ ACCESSED WILL THROW ERROR.
+// THIS RETURNS THE ACCESSED VALUE
+
+// WITHOUT OPTIONAL CHAINING
+console.log(restaurant.hours.mon?.open); // error
+// WITH OPTIONAL CHAINING
+console.log(restaurant.hours?.thur?.open); // 12
+
+const days = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+
+for (const day of days) {
+  const open = restaurant.hours[day]?.open ?? "closed";
+  console.log(
+    `On ${day}, we ${restaurant.hours[day] ? "open at" : "are"} ${open}`,
+  );
+}
+// CAN BE USED IN ARRAYS
+const users = [{ name: "James", email: "james@gmail.com" }];
+console.log(users[0]?.name ?? "User array empty");
