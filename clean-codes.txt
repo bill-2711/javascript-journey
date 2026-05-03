@@ -1,0 +1,18 @@
+In ES6 object literals
+you can rewrite functions in object with just the property name without the function
+keyword.
+
+
+const restaurant = {
+  name: 'Classico Italiano',
+  // ES6 enhacned object literal
+  hours,
+
+  NOTE order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+
+
+    InsteadOf order: function(starterIndex, mainIndex){
+            return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    }
+  },}
