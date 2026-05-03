@@ -32,6 +32,10 @@ const menu = [
     price: 50,
     category: "protein",
   },
+  {
+    name: "pork",
+    category: "protein",
+  },
 ];
 
 // ===== ORDERS =====
@@ -59,8 +63,5 @@ const customers = [
 
 // DISPLAY all menu items
 for (const food of menu) {
-  console.log(food);
+  console.log(`${food.name}: ${food?.price ?? "Not priced yet"}`);
 }
-
-const [a, b, c] = menu;
-console.log(a.name, b, c);
