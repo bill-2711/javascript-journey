@@ -65,5 +65,18 @@ const customers = [
 // DISPLAY all menu items
 for (const food of menu) {
   const { name, price, category } = food;
-  console.log(`[${category}] ${name} - GH₵${price ?? "Not priced yet"}`);
+  // console.log(`[${category}] ${name} - GH₵${price ?? "Not priced yet"}`);
 }
+
+let userInput = Number(prompt("Select user between 0 or 1"));
+const currentCustomer = order?.[userInput];
+console.log(`Welcome ${currentCustomer.customer}`);
+
+let userMenu = Number(prompt("Select your menu order from the list [0 - 6]"));
+const userMenuSelect = menu[userMenu];
+console.log(userMenuSelect);
+// function usCh(cus){
+// return `${order.}`
+// };
+// console.log(usCh(userMenuSelect));
+console.log(order[userInput]?.items.push(userMenuSelect));
