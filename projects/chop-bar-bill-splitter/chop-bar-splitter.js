@@ -65,18 +65,24 @@ const customers = [
 // DISPLAY all menu items
 for (const food of menu) {
   const { name, price, category } = food;
-  // console.log(`[${category}] ${name} - GH₵${price ?? "Not priced yet"}`);
+  console.log(`[${category}] ${name} - GH₵${price ?? "Not priced yet"}`);
 }
 
 let userInput = Number(prompt("Select user between 0 or 1"));
+// Selecting current customer — smart use of optional chaining
 const currentCustomer = order?.[userInput];
+
+// Welcoming the customer — clean template literal
 console.log(`Welcome ${currentCustomer.customer}`);
 
 let userMenu = Number(prompt("Select your menu order from the list [0 - 6]"));
+// Selecting menu item — correct array access
 const userMenuSelect = menu[userMenu];
-console.log(userMenuSelect);
-// function usCh(cus){
-// return `${order.}`
-// };
-// console.log(usCh(userMenuSelect));
-console.log(order[userInput]?.items.push(userMenuSelect));
+
+// Adding to order — correct use of push
+order[userInput]?.items.push(userMenuSelect);
+console.log(order[userInput]?.items);
+
+console.log(
+  `Mr.${currentCustomer.customer}, you selected our ${menu[userMenu]?.category} ${menu[userMenu]?.name} and it's GH₵${menu[userMenu]?.price}.`,
+);
