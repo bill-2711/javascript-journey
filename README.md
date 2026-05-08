@@ -16,6 +16,7 @@ Data Structures: Modern Operators & Strings
 - [x] For Of Loop
 - [x] Enhanced Object Literals
 - [x] Optional Chaining
+- [x] Looping Obj, Keys, Values & Entries
 - [ ] Maps
 - [ ] Sets
 - [ ] Strings
