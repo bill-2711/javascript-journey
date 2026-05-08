@@ -72,3 +72,21 @@ const entries = Object.entries(openingHours);
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key}, we open at ${open} and close at ${close}`);
 }
+// Corrections
+const chopBarSales = {
+  monday: 450,
+  tuesday: 380,
+  wednesday: 520,
+  thursday: 410,
+  friday: 600,
+};
+
+const entry = Object.values(chopBarSales);
+
+let total = 0;
+
+for (const value of [...entry]) {
+  total += value;
+}
+
+console.log(total);
