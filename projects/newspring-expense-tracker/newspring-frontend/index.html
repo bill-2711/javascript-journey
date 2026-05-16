@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newspring Chapel AG - Financial Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-section">
+            <h1>Newspring Chapel AG</h1>
+            <p>Financial Management System</p>
+          </div>
+          <div class="month-selector">
+            <label for="monthSelect">Select Month:</label>
+            <select id="monthSelect">
+              <option value="january">January</option>
+              <option value="february">February</option>
+              <option value="march">March</option>
+              <option value="april">April</option>
+              <option value="may">May</option>
+              <option value="june">June</option>
+              <option value="july">July</option>
+              <option value="august">August</option>
+              <option value="september">September</option>
+              <option value="october">October</option>
+              <option value="november">November</option>
+              <option value="december">December</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <div class="container">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="income">Income</button>
+        <button class="tab-btn" data-tab="expenses">Expenses</button>
+        <button class="tab-btn" data-tab="reports">Reports</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+          <div class="card income-card">
+            <div class="card-header">
+              <h3>Total Income</h3>
+              <span class="icon">📈</span>
+            </div>
+            <p class="amount" id="totalIncome">$0.00</p>
+            <p class="card-meta">This month</p>
+          </div>
+
+          <div class="card expense-card">
+            <div class="card-header">
+              <h3>Total Expenses</h3>
+              <span class="icon">📉</span>
+            </div>
+            <p class="amount" id="totalExpense">$0.00</p>
+            <p class="card-meta">This month</p>
+          </div>
+
+          <div class="card balance-card">
+            <div class="card-header">
+              <h3>Balance</h3>
+              <span class="icon">💰</span>
+            </div>
+            <p class="amount" id="balance">$0.00</p>
+            <p class="card-meta" id="balanceStatus">Surplus</p>
+          </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="tab-content active" id="overview-tab">
+          <div class="content-grid">
+            <!-- Weekly Trend -->
+            <div class="section">
+              <h2>Weekly Breakdown</h2>
+              <div class="weekly-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Week</th>
+                      <th>Income</th>
+                      <th>Expenses</th>
+                      <th>Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody id="weeklyBody">
+                    <!-- Populated by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Income Sources -->
+            <div class="section">
+              <h2>Income Sources</h2>
+              <div class="income-breakdown" id="incomeBreakdown">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+
+            <!-- Expense Categories -->
+            <div class="section">
+              <h2>Expense Categories</h2>
+              <div class="expense-breakdown" id="expenseBreakdown">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Income Tab -->
+        <div class="tab-content" id="income-tab">
+          <div class="section">
+            <h2>Income Details</h2>
+
+            <!-- Add Income Form -->
+            <div class="form-section">
+              <h3>Add New Income</h3>
+              <form id="incomeForm" class="form">
+                <div class="form-group">
+                  <label for="incomeCategory">Category:</label>
+                  <select id="incomeCategory" required>
+                    <option value="">Select Category</option>
+                    <option value="Tithes">Tithes</option>
+                    <option value="Offerings">Offerings</option>
+                    <option value="Special Seeds">Special Seeds</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="incomeAmount">Amount (GHS):</label>
+                  <input
+                    type="number"
+                    id="incomeAmount"
+                    placeholder="0.00"
+                    step="0.01"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="incomeWeek">Week:</label>
+                  <select id="incomeWeek" required>
+                    <option value="1">Week 1</option>
+                    <option value="2">Week 2</option>
+                    <option value="3">Week 3</option>
+                    <option value="4">Week 4</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Add Income
+                </button>
+              </form>
+            </div>
+
+            <!-- Income List -->
+            <h3>Income Records</h3>
+            <div class="records-list" id="incomeList">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Expenses Tab -->
+        <div class="tab-content" id="expenses-tab">
+          <div class="section">
+            <h2>Expense Details</h2>
+
+            <!-- Add Expense Form -->
+            <div class="form-section">
+              <h3>Add New Expense</h3>
+              <form id="expenseForm" class="form">
+                <div class="form-group">
+                  <label for="expenseCategory">Category:</label>
+                  <select id="expenseCategory" required>
+                    <option value="">Select Category</option>
+                    <option value="Staff Salaries">Staff Salaries</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Programs">Programs</option>
+                    <option value="Supplies">Supplies</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="expenseAmount">Amount (GHS):</label>
+                  <input
+                    type="number"
+                    id="expenseAmount"
+                    placeholder="0.00"
+                    step="0.01"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="expenseWeek">Week:</label>
+                  <select id="expenseWeek" required>
+                    <option value="1">Week 1</option>
+                    <option value="2">Week 2</option>
+                    <option value="3">Week 3</option>
+                    <option value="4">Week 4</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Add Expense
+                </button>
+              </form>
+            </div>
+
+            <!-- Expense List -->
+            <h3>Expense Records</h3>
+            <div class="records-list" id="expenseList">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Reports Tab -->
+        <div class="tab-content" id="reports-tab">
+          <div class="section">
+            <h2>Monthly Summary Report</h2>
+
+            <div class="report-grid">
+              <div class="report-item">
+                <span class="label">Total Income:</span>
+                <span class="value income" id="reportTotalIncome">$0.00</span>
+              </div>
+              <div class="report-item">
+                <span class="label">Total Expenses:</span>
+                <span class="value expense" id="reportTotalExpense">$0.00</span>
+              </div>
+              <div class="report-item">
+                <span class="label">Net Balance:</span>
+                <span class="value" id="reportBalance">$0.00</span>
+              </div>
+              <div class="report-item">
+                <span class="label">Expense Ratio:</span>
+                <span class="value" id="expenseRatio">0%</span>
+              </div>
+              <div class="report-item">
+                <span class="label">Income vs Expenses:</span>
+                <span class="value" id="incomeVsExpense">0%</span>
+              </div>
+              <div class="report-item">
+                <span class="label">Avg Weekly Income:</span>
+                <span class="value income" id="avgWeeklyIncome">$0.00</span>
+              </div>
+            </div>
+
+            <!-- Income Sources Report -->
+            <h3>Income Breakdown</h3>
+            <div class="report-section" id="incomeReport">
+              <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Expense Report -->
+            <h3>Expense Breakdown</h3>
+            <div class="report-section" id="expenseReport">
+              <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Export Button -->
+            <button class="btn btn-primary mt-20" id="exportBtn">
+              📥 Export as PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Hidden Export Content -->
+    <div
+      id="exportContent"
+      style="
+        display: none;
+        padding: 40px;
+        background: white;
+        color: #000;
+        font-family: Arial, sans-serif;
+      "
+    >
+      <div style="max-width: 800px; margin: 0 auto">
+        <!-- Export Header -->
+        <div
+          style="
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #10b981;
+            padding-bottom: 20px;
+          "
+        >
+          <h1 style="margin: 0; color: #10b981; font-size: 28px">
+            Newspring Chapel AG
+          </h1>
+          <p style="margin: 5px 0 0 0; color: #666; font-size: 14px">
+            Financial Management Report
+          </p>
+        </div>
+
+        <!-- Report Date -->
+        <div
+          style="
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-left: 4px solid #10b981;
+          "
+        >
+          <p style="margin: 0; font-weight: bold">
+            Month: <span id="exportMonth"></span>
+          </p>
+          <p style="margin: 5px 0 0 0; font-size: 12px; color: #666">
+            Generated: <span id="exportDate"></span>
+          </p>
+        </div>
+
+        <!-- Summary Cards -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+          "
+        >
+          <div
+            style="
+              padding: 15px;
+              border: 2px solid #10b981;
+              border-radius: 8px;
+              text-align: center;
+            "
+          >
+            <p
+              style="margin: 0; font-size: 12px; color: #666; font-weight: bold"
+            >
+              TOTAL INCOME
+            </p>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 20px;
+                color: #10b981;
+                font-weight: bold;
+              "
+              id="exportTotalIncome"
+            >
+              $0.00
+            </p>
+          </div>
+          <div
+            style="
+              padding: 15px;
+              border: 2px solid #ef4444;
+              border-radius: 8px;
+              text-align: center;
+            "
+          >
+            <p
+              style="margin: 0; font-size: 12px; color: #666; font-weight: bold"
+            >
+              TOTAL EXPENSES
+            </p>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 20px;
+                color: #ef4444;
+                font-weight: bold;
+              "
+              id="exportTotalExpense"
+            >
+              $0.00
+            </p>
+          </div>
+          <div
+            style="
+              padding: 15px;
+              border: 2px solid #06b6d4;
+              border-radius: 8px;
+              text-align: center;
+            "
+          >
+            <p
+              style="margin: 0; font-size: 12px; color: #666; font-weight: bold"
+            >
+              BALANCE
+            </p>
+            <p
+              style="
+                margin: 10px 0 0 0;
+                font-size: 20px;
+                color: #06b6d4;
+                font-weight: bold;
+              "
+              id="exportBalance"
+            >
+              $0.00
+            </p>
+          </div>
+        </div>
+
+        <!-- Weekly Breakdown -->
+        <div style="margin-bottom: 30px">
+          <h2
+            style="
+              font-size: 16px;
+              margin: 0 0 15px 0;
+              color: #333;
+              border-bottom: 2px solid #333;
+              padding-bottom: 10px;
+            "
+          >
+            Weekly Breakdown
+          </h2>
+          <table
+            style="width: 100%; border-collapse: collapse; font-size: 13px"
+          >
+            <thead>
+              <tr style="background: #f5f5f5">
+                <th
+                  style="
+                    padding: 10px;
+                    text-align: left;
+                    border: 1px solid #ddd;
+                    font-weight: bold;
+                  "
+                >
+                  Week
+                </th>
+                <th
+                  style="
+                    padding: 10px;
+                    text-align: right;
+                    border: 1px solid #ddd;
+                    font-weight: bold;
+                  "
+                >
+                  Income
+                </th>
+                <th
+                  style="
+                    padding: 10px;
+                    text-align: right;
+                    border: 1px solid #ddd;
+                    font-weight: bold;
+                  "
+                >
+                  Expenses
+                </th>
+                <th
+                  style="
+                    padding: 10px;
+                    text-align: right;
+                    border: 1px solid #ddd;
+                    font-weight: bold;
+                  "
+                >
+                  Balance
+                </th>
+              </tr>
+            </thead>
+            <tbody id="exportWeeklyBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Income Breakdown -->
+        <div style="margin-bottom: 30px">
+          <h2
+            style="
+              font-size: 16px;
+              margin: 0 0 15px 0;
+              color: #333;
+              border-bottom: 2px solid #10b981;
+              padding-bottom: 10px;
+            "
+          >
+            Income Breakdown by Category
+          </h2>
+          <div id="exportIncomeBreakdown" style="font-size: 13px"></div>
+        </div>
+
+        <!-- Expense Breakdown -->
+        <div style="margin-bottom: 30px">
+          <h2
+            style="
+              font-size: 16px;
+              margin: 0 0 15px 0;
+              color: #333;
+              border-bottom: 2px solid #ef4444;
+              padding-bottom: 10px;
+            "
+          >
+            Expense Breakdown by Category
+          </h2>
+          <div id="exportExpenseBreakdown" style="font-size: 13px"></div>
+        </div>
+
+        <!-- Summary Statistics -->
+        <div
+          style="
+            margin-top: 30px;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 8px;
+          "
+        >
+          <h2 style="font-size: 14px; margin: 0 0 15px 0; color: #333">
+            Key Statistics
+          </h2>
+          <table style="width: 100%; font-size: 12px">
+            <tr style="border-bottom: 1px solid #ddd">
+              <td style="padding: 8px 0">Expense Ratio:</td>
+              <td
+                style="padding: 8px 0; font-weight: bold"
+                id="exportExpenseRatio"
+              >
+                0%
+              </td>
+            </tr>
+            <tr style="border-bottom: 1px solid #ddd">
+              <td style="padding: 8px 0">Income vs Expenses:</td>
+              <td
+                style="padding: 8px 0; font-weight: bold"
+                id="exportIncomeVsExpense"
+              >
+                0%
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0">Average Weekly Income:</td>
+              <td
+                style="padding: 8px 0; font-weight: bold"
+                id="exportAvgWeekly"
+              >
+                $0.00
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Footer -->
+        <div
+          style="
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+          "
+        >
+          <p style="margin: 0">
+            © 2024 Newspring Chapel AG Financial Management System
+          </p>
+          <p style="margin: 5px 0 0 0">This is a confidential document</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2026 Newspring Chapel AG Financial Management System. All
+          rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- PDF Export Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
