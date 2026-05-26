@@ -17,7 +17,7 @@ Data Structures: Modern Operators & Strings
 - [x] Enhanced Object Literals
 - [x] Optional Chaining
 - [x] Looping Obj, Keys, Values & Entries
-- [ ] Maps
+- [x] Maps
 - [x] Sets
 - [ ] Strings
 
