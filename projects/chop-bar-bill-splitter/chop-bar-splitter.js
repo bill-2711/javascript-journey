@@ -79,9 +79,6 @@ console.log(`Welcome ${currentCustomer.customer}`);
 
 // Selecting menu item — correct array access
 const userMenuSelect = menu[userMenu];
-// for (const [key, value] of Object.entries(userMenuSelect)) {
-//   console.log(key, value);
-// }
 
 // Adding to order — correct use of push
 order[userInput]?.items.push(userMenuSelect);
