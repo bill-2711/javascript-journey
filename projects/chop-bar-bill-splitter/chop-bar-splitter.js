@@ -1,46 +1,59 @@
 "use strict";
 // ===== MENU =====
 // your menu items as an array of objects
-const menu = [
-  {
-    name: "waakye",
-    price: 30,
-    category: "main",
-  },
-  {
-    name: "rice & stew",
-    price: 25,
-    category: "main",
-  },
-  {
-    name: "banku & okro stew",
-    price: 40,
-    category: "main",
-  },
-  {
-    name: "Sobolo",
-    price: 15,
-    category: "drink",
-  },
-  {
-    name: "Malta Guinness",
-    price: 10,
-    category: "drink",
-  },
-  {
-    name: "tilapia",
-    price: 50,
-    category: "protein",
-  },
-  {
-    name: "pork",
-    price: 50,
-    category: "protein",
-  },
-];
+const menu = new Map([
+  [
+    "waakye",
+    {
+      price: 30,
+      category: "main",
+    },
+  ],
+  [
+    "rice & stew",
+    {
+      price: 25,
+      category: "main",
+    },
+  ],
+  [
+    "banku & okro stew",
+    {
+      price: 40,
+      category: "main",
+    },
+  ],
+  [
+    "Sobolo",
+    {
+      price: 15,
+      category: "drink",
+    },
+  ],
+  [
+    "Malta Guinness",
+    {
+      price: 10,
+      category: "drink",
+    },
+  ],
+  [
+    "tilapia",
+    {
+      price: 50,
+      category: "protein",
+    },
+  ],
+  [
+    "pork",
+    {
+      price: 50,
+      category: "protein",
+    },
+  ],
+]);
 
 // ===== ORDERS =====
-// your orders array
 const order = [
   {
     customer: "Bill",
@@ -61,33 +74,40 @@ const customers = [
   { name: "Bill", tableNumber: 1 },
   { name: "Oscar", tableNumber: 2 },
 ];
-let userInput = Number(prompt("Select user between 0 or 1"));
-let userMenu = Number(prompt("Select your menu order from the list [0 - 6]"));
 
-let userBill = 0;
 // DISPLAY all menu items
-for (const food of menu) {
-  const { name, price, category } = food;
-  console.log(`[${category}] ${name} - GH₵${price ?? "Not priced yet"}`);
-  userBill += menu[userMenu]?.price;
+for (const [key, value] of menu.entries()) {
+  const { price, category } = value;
+  console.log(`[${category}] ${key} - GH₵${price ?? " Not priced yet"}`);
 }
+
+let userInput = Number(prompt("Select user between 0 or 1"));
+let userMenu = prompt(
+  "Pick your orders: waakye, pork, tilapia, Sobolo, Malta Guinness, banku & okro stew and rice & stew",
+);
+
 // Selecting current customer — smart use of optional chaining
 const currentCustomer = order?.[userInput];
 
-// Welcoming the customer — clean template literal
-console.log(`Welcome ${currentCustomer.customer}`);
+// User selected food
+const userSelectedMenu = menu.get(userMenu);
+console.log(userSelectedMenu);
 
-// Selecting menu item — correct array access
-const userMenuSelect = menu[userMenu];
-
-// Adding to order — correct use of push
-order[userInput]?.items.push(userMenuSelect);
+// Customer order list
+order[userInput]?.items.push(userSelectedMenu);
 console.log(order[userInput]?.items);
 
-// User confirmation message
+// // User confirmation message
 console.log(
-  `Mr.${currentCustomer.customer}, you selected our ${menu[userMenu]?.category} ${menu[userMenu]?.name} and it's GH₵${menu[userMenu]?.price}.`,
+  `Mr.${currentCustomer.customer}, you selected our ${menu.get(userMenu)?.category} ${userMenu} and it's GH₵${menu.get(userMenu)?.price}.`,
 );
 
-// User total bill
-console.log(`Your total bill: ${userBill}`);
+//TO BE WORKED ON
+const me = order[userInput]?.items;
+let customerConfirm = "done";
+let customerBill = 0;
+
+while (customerConfirm === "done") {
+  for (const { price } of me) customerBill += price;
+}
+console.log(customerBill);
