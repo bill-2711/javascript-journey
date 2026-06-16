@@ -103,6 +103,7 @@ console.log(
 
 //TO BE WORKED ON
 const me = order[userInput]?.items;
+let userBillTotal = 0;
 let customerConfirm = prompt("Do you want to order more? yes or done");
 
 while (customerConfirm === "yes") {
@@ -113,7 +114,18 @@ while (customerConfirm === "yes") {
   userSelectedMenu = menu.get(userMenu);
   order[userInput]?.items.push(userSelectedMenu);
   console.log(order[userInput]?.items);
+  0;
   customerConfirm = prompt("Do you want to order more? yes or done");
 
   if (customerConfirm === "done") break;
 }
+
+for (let userBill of me) {
+  userBillTotal += userBill.price;
+}
+console.log(userBillTotal);
+
+// // User confirmation message
+console.log(
+  `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal}`,
+);
