@@ -83,7 +83,7 @@ for (const [key, value] of menu.entries()) {
 let userInput = Number(prompt("Select user between 0 or 1"));
 
 //  Users split count -- Number of eaters
-let splitCount = Number(prompt("How many peple will be served? "));
+let splitCount = Number(prompt("How many people will be served? "));
 
 let userMenu = prompt(
   "Pick your orders: waakye, pork, tilapia, Sobolo, Malta Guinness, banku & okro stew and rice & stew",
@@ -106,7 +106,7 @@ console.log(
 );
 
 //TO BE WORKED ON
-const me = order[userInput]?.items;
+const customerItems = order[userInput]?.items;
 let userBillTotal = 0;
 let customerConfirm = prompt("Do you want to order more? yes or done");
 
@@ -124,21 +124,23 @@ while (customerConfirm === "yes") {
   if (customerConfirm === "done") break;
 }
 
-for (let userBill of me) {
+for (let userBill of customerItems) {
   userBillTotal += userBill.price;
 }
 
+order[userInput].total = userBillTotal;
+console.log(order[userInput]);
+
 // Calculating the eaters bill
-let checkSplitCount = splitCount || 0;
 let numberOfPeople = userBillTotal / splitCount;
 
 // // User confirmation message
-if (numberOfPeople == Infinity) {
+if (!splitCount || splitCount <= 1) {
   console.log(
     `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal}`,
   );
 } else {
   console.log(
-    `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal}.00 cedis and your splitting bill is ${Math.trunc(numberOfPeople)}.00 cedis for each.`,
+    `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal}.00 cedis and your splitting bill is ${numberOfPeople.toFixed(2)}.00 cedis for each.`,
   );
 }
