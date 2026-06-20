@@ -128,6 +128,7 @@ for (let userBill of customerItems) {
   userBillTotal += userBill.price;
 }
 
+// updating user total bill
 order[userInput].total = userBillTotal;
 console.log(order[userInput]);
 
@@ -141,6 +142,6 @@ if (!splitCount || splitCount <= 1) {
   );
 } else {
   console.log(
-    `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal}.00 cedis and your splitting bill is ${numberOfPeople.toFixed(2)}.00 cedis for each.`,
+    `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal.toFixed(2)} cedis and your splitting bill is ${numberOfPeople.toFixed(2)} cedis for each.`,
   );
 }
