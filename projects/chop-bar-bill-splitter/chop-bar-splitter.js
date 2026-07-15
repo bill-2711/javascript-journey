@@ -158,15 +158,15 @@ let pricing = "GH₵".padStart(25, " ");
 console.log(`==================================================`);
 console.log(restuarantName);
 console.log(`==================================================`);
-console.log(`Customer: ${currentCustomer.customer}
+console.log(`Customer:${currentCustomer.customer}
 Table: ${currentCustomer.tableNumber}`);
 console.log("--------------------------------------------------");
 for (const { name, price } of order[userInput]?.items) {
-  console.log(`${name}: ${pricing}${price}`);
+  console.log(`${name}:${pricing}${price}`);
 }
 console.log(`--------------------------------------------------`);
-console.log(`Total:                            ${userBillTotal}`);
-console.log(`Split(${splitCount})                              `);
+console.log(`Total:${pricing}${userBillTotal}`);
+console.log(`Split(${splitCount})${pricing}${numberOfPeople.toFixed(2)}`);
 console.log(`==================================================`);
-console.log(`Thank you for Dinning!`.padStart(35, " "));
+console.log(`Thank you for Dining!`.padStart(35, " "));
 console.log(`==================================================`);
