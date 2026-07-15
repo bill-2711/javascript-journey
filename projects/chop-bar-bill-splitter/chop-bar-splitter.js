@@ -145,3 +145,13 @@ if (!splitCount || splitCount <= 1) {
     `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal.toFixed(2)} cedis and your splitting bill is ${numberOfPeople.toFixed(2)} cedis for each.`,
   );
 }
+let restuarantName = " Julie's Kitchen".padStart(25, " ");
+let pricing = "GH₵".padStart(25, " ");
+
+console.log(`==================================================`);
+console.log(restuarantName);
+console.log(`==================================================`);
+console.log(`Customer: ${currentCustomer.customer}
+Table: ${currentCustomer.tableNumber}`);
+console.log("--------------------------------------------------");
+console.log(`${userMenu}: ${pricing}${menu.get(userMenu)?.price}`);
