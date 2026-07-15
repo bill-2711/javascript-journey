@@ -5,6 +5,7 @@ const menu = new Map([
   [
     "waakye",
     {
+      name: "waakye",
       price: 30,
       category: "main",
     },
@@ -12,6 +13,7 @@ const menu = new Map([
   [
     "rice & stew",
     {
+      name: "rice & stew",
       price: 25,
       category: "main",
     },
@@ -19,6 +21,7 @@ const menu = new Map([
   [
     "banku & okro stew",
     {
+      name: "banku & okro stew",
       price: 40,
       category: "main",
     },
@@ -26,6 +29,7 @@ const menu = new Map([
   [
     "Sobolo",
     {
+      name: "Sobolo",
       price: 15,
       category: "drink",
     },
@@ -33,6 +37,7 @@ const menu = new Map([
   [
     "Malta Guinness",
     {
+      name: "Malta Guinness",
       price: 10,
       category: "drink",
     },
@@ -40,6 +45,7 @@ const menu = new Map([
   [
     "tilapia",
     {
+      name: "tilapia",
       price: 50,
       category: "protein",
     },
@@ -47,6 +53,7 @@ const menu = new Map([
   [
     "pork",
     {
+      name: "pork",
       price: 50,
       category: "protein",
     },
@@ -145,7 +152,7 @@ if (!splitCount || splitCount <= 1) {
     `Mr.${currentCustomer.customer}, your total for your order is ${userBillTotal.toFixed(2)} cedis and your splitting bill is ${numberOfPeople.toFixed(2)} cedis for each.`,
   );
 }
-let restuarantName = " Julie's Kitchen".padStart(25, " ");
+let restuarantName = " Julie's Kitchen".padStart(30, " ");
 let pricing = "GH₵".padStart(25, " ");
 
 console.log(`==================================================`);
@@ -154,4 +161,12 @@ console.log(`==================================================`);
 console.log(`Customer: ${currentCustomer.customer}
 Table: ${currentCustomer.tableNumber}`);
 console.log("--------------------------------------------------");
-console.log(`${userMenu}: ${pricing}${menu.get(userMenu)?.price}`);
+for (const { name, price } of order[userInput]?.items) {
+  console.log(`${name}: ${pricing}${price}`);
+}
+console.log(`--------------------------------------------------`);
+console.log(`Total:                            ${userBillTotal}`);
+console.log(`Split(${splitCount})                              `);
+console.log(`==================================================`);
+console.log(`Thank you for Dinning!`.padStart(35, " "));
+console.log(`==================================================`);
